@@ -1,0 +1,224 @@
+{% extends "layout.html" %}
+{% block head %}
+
+	{% if session.logged_in %}
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&signed_in=true"> </script>
+  	{% endif%}
+{% endblock %}
+{% block body %}
+	{% if session.logged_in %}
+
+	    <div class="container">
+	      <div class="navbar-header">
+	        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	          <span class="icon-bar"></span>
+	        </button>
+	      </div>
+	      <div class="collapse navbar-collapse">
+	        <ul class="nav navbar-nav nav-justified">
+	        {% if not session.logged_in %}    
+	          <li class="metanav" style="right:0;"></li>
+			{% else %}
+	          	<li><a href="#section1">Home</a></li>
+		        <li><a href="#section2">Sobre el proyecto</a></li>
+		        <li><a href="#section3">Demostrador</a></li>
+				<li class="metanav"><a href="{{ url_for('logout') }}">Cerrar sesión</a></li>
+			{% endif %}
+	        </ul>
+	      </div><!--/.nav-collapse -->
+	    </div><!--/.container -->
+	</div><!--/.navbar -->
+	
+<div class="divider" id="section1"></div>
+	<div class="container">
+		<div class="col-sm-10 col-sm-offset-1">
+			<div class="page-header text-center">
+		    	<p class="lead text-center"> 
+		      		Conteo preciso de vehículos para situaciones de alta congestión en imágenes de videovigilancia de tráfico
+		    	</p> 
+	    	</div>
+	    	<div id="logos-top" class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+		      	<h4>Entidades:</h4>
+		        <a href="http://www.interior.gob.es/" target="_blank">
+		        	<img src="../static/images/logoMI.png" class="img-responsive" alt="Ministerio del interior" height="350" width="250"/>
+		        </a>
+		        <a href="http://www.dgt.es/es/" target="_blank">
+		        	<img src="../static/images/logoDGT.png" class="img-responsive" alt="DGT" height="250" width="130"/>
+		        </a>
+		        <a href="http://www.uah.es/" target="_blank">
+		            <img src="../static/images/logoUAH.png" class="img-responsive" alt="Universidad de Alcalá" height="300" width="200"/>
+		        </a>
+		        <a href="http://agamenon.tsc.uah.es/Investigacion/gram/" target="_blank">
+		            <img src="../static/images/logoGRAM.png" class="img-responsive" alt="GRAM - UAH" height="300" width="200"/>
+		        </a>
+	    	</div>
+	    	<div class="divider"></div>
+		</div>
+	</div>
+	<div class="divider"></div>
+	<section class="bg-1">
+		<div class="col-sm-6 col-sm-offset-3 text-center"></div>
+	</section>
+	<div class="divider" id="section2"></div> 
+	<div class="row">
+	  	<div class="col-sm-10 col-sm-offset-1">
+	    	<h1>Sobre el proyecto</h1>
+	      	<hr>
+		    <p class="description">
+	    		<strong>Título:</strong> Conteo preciso de vehículos para situaciones de alta congestión en imágenes de videovigilancia de tráfico
+			</p> 
+		    <p class="description">
+		    	<strong>Referencia:</strong> SPIP2014-1468
+		    </p>
+		    <!--<p class="description">
+		    	<strong>Investigador Principal:</strong> LÓPEZ SASTRE, Roberto Javier
+		    </p>
+		    <p class="description">
+		    	<strong>Otros Investigadores:</strong>
+		    </p>-->
+		    <p class="description">
+		    	<strong>Descripción:</strong> Este proyecto aborda la monitorización continúa y precisa del nivel de congestión del tráfico en tiempo real, a partir de la red de cámaras de videovigilancia desplegadas por la  Dirección General de Tráfico (DGT) independientemente del grado de oclusión de los vehículos que aparecen en escena y el punto de vista desde el que son observados mediante deep learning.
+		    </p>
+		    <hr>
+		    <div class="divider"></div>
+	  	</div><!--/col-->
+	</div><!--/container-->
+	<div class="divider"></div>
+	<section class="bg-2">
+		<div class="col-sm-6 col-sm-offset-3 text-center">
+			<h2 class="element-style">
+				Comprueba nuestros resultados en el demostrador
+			</h2>
+		</div>
+	</section>
+	<div class="divider" id="section3"></div>
+	<div class="row">
+	  <div class="col-sm-10 col-sm-offset-1">
+	    <h1>
+	    	Demostrador
+	    </h1>
+	    <hr>
+	    
+		<p class="description">
+	    	<strong>Descripción:</strong>
+	    </p>
+	    <p class="description">
+	    	El gestor de cámaras dispone de 3 funcionalidades básicas, visualización de datos, activación y desactivación de cámaras. 
+	    </p>
+	    <p class="description">
+	    	El primer paso será activar la cámara o cámaras que se deseen sean procesadas por el sistema. 
+			Para ello se dispone de un selector situado a la izquierda del mapa. Una vez hecha la selección deseada sólo hay que pulsar el botón Activar cámaras de color verde. 
+	    </p>
+	    <p class="description">
+	    	Cabe destacar que el sistema se ajusta a la selección realizada por lo que no es preciso hacer uso de todos los campos mostrados.
+	    </p>
+	    <p class="description">
+	    	Si se ha activado alguna cámara, ésta se mostrará directamente en el mapa; para visualizar sus datos sólo hay que hacer click en el marcador de la cámara.
+	    </p>
+	    <p class="description">
+	    	En este punto se podrá visualizar una imagen, siendo esta la imagen original que nos entrega la cámara seleccionada, además de una gráfica que revela un histórico de datos procesados a lo largo del día con las imagenes entregadas por la cámara seleccionada. Tanto los datos representados como las imagenes serán actualizadas con un intervalo de alrededor de 5 minutos de forma dinámica.
+	    </p>
+	    <p class="description">
+	    	Para desactivarla se puede hacer uso de dos opciones. 
+	    	La primera se trata de emplear el botón que se situa bajo la gráfica, desactivando así la cámara seleccionada; la segunda opción es hacer uso del selector que empleó al principio, de forma análoga a la activación, la desactivación mediante el selector se ajustará a la selección realizada.
+	    </p>
+	    <hr>
+	    <div class="col-xs-12 col-md-12 col-lg-3 manager">
+	      <div class="selector center">
+	        <form class="form-horizontal">
+	          <fieldset>
+	            <div class="form-group">
+	              <label for="province" class="col-xs-2 col-md-2 col-lg-3 control-label">Provincia</label>
+	              <div class="col-xs-7 col-md-8 col-lg-8 control-label">
+	                <select class="solved" id="province" data-toggle="tooltip" data-placement="top"  data-original-title="Seleccione una provincia para continuar la selección">
+	                  <option value="default">Elija una opción...</option>
+	                </select>
+	              </div>
+	            </div>
+	            <div class="form-group">
+	              <label for="road" class="col-xs-2 col-md-2 col-lg-3 control-label">Carretera</label>
+	              <div class="col-xs-7 col-md-8 col-lg-8 control-label">
+	                <select class="solved" id="road" data-toggle="tooltip" data-placement="top"  data-original-title="Seleccione una provincia para visualizar sus posibles carreteras">
+	                  <option value="default">Elija una opción...</option>
+	                </select>
+	              </div>
+	            </div>
+	            <div class="form-group">
+	              <label for="pk" class="col-xs-2 col-md-2 col-lg-3 control-label">PK</label>
+	              <div class="col-xs-7 col-md-8 col-lg-8 control-label">
+	                <select class="solved" id="pk" data-toggle="tooltip" data-placement="top"  data-original-title="Seleccione una carretera para visualizar sus posibles puntos kilométricos">
+	                  <option value="default">Elija una opción...</option>
+	                </select>
+	              </div>
+	            </div>
+	            <div class="form-group">
+	                <div class="col-xs-3 col-xs-offset-2 col-md-10 col-lg-2 btns">
+	                  <button type="button" id="activate" class="button btn btn-raised btn-success" data-toggle="tooltip" data-placement="bottom"  data-original-title="Activa la cámara seleccionada">
+	                    Activar
+	                  </button>
+	                </div>
+	                <div class="col-xs-3 col-md-10 col-lg-3 col-lg-push-3 btns">
+	                  <button type="button" id="deactivate" class="button btn btn-raised btn-danger" data-toggle="tooltip" data-placement="bottom"  data-original-title="Desactiva la cámara seleccionada">
+	                    Desactivar
+	                  </button>
+	                </div>
+	            </div>
+	          </fieldset>
+	        </form>
+	      </div>
+	    </div>
+	    <div class="col-xs-10 col-md-11 col-lg-9">
+	      <div id="maps">
+	        <div class="img-responsive img" id="googleMap" class="fullscreen"></div>
+	      </div>
+	    </div>
+	    <div id="dataShown" class="hidden">
+	    	<div class="col-xs-12 col-md-12 col-lg-3 dataShown">
+            <h4 class="control-label">Imagenes de cámara</h4>
+            <div id="dataImage_ori" class="dataImage">
+              <img id="dataImage_ori_img" class="img_ori img-responsive img-thumbnail" src="" />
+              <p class="center">Imagen original</p>
+            </div>
+            <!--<div id="dataImage_proc" class="dataImage">
+              <img id="dataImage_proc_img" class="img_ori img-responsive img-thumbnail" src="" />
+              <p class="center">Imagen procesada</p>
+            </div>-->
+          </div>
+          <div class="col-xs-10 col-md-11 col-lg-9 dataShown">
+            <h4 class="control-label center">Histórico diario de datos procesados</h4>
+            <div id="chartdiv"></div>
+            <!--<div id="progressTimer"></div>-->
+            <div class="btns">
+              <button type="button" id="deact1" value="" class="button btn btn-raised btn-danger .btn-lg" data-toggle="tooltip" data-placement="top"  data-original-title="Desactiva la cámara mostrada">
+                Desactivar cámara
+              </button>
+            </div>
+          </div>
+	    </div>
+	  </div>
+	</div>
+	<div id="footer" class="container-fluid">
+	  <div class="center">
+	    <a href="http://agamenon.tsc.uah.es/Investigacion/gram/" class="text-muted">GRAM - UAH</a>
+	  </div>
+	</div>
+	<ul class="nav pull-right scroll-top">
+	  <li><a href="#" title="Scroll to top"><i class="glyphicon glyphicon-chevron-up"></i></a></li>
+	</ul>
+	
+	<!-- Scripts -->
+	<script src="static/js/jquery.min.js"></script>
+	<script src='static/js/bootstrap.min.js'></script>
+	<script src='static/js/amcharts.js'></script>
+	<script src='static/js/serial.js'></script>
+	<script src='static/js/scripts.js'></script>
+	<script src='static/js/jquery.progressTimer.min.js'></script>
+	{% else %}
+	<script type="text/javascript">
+	  window.location.href = "{{ url_for('login') }}"
+	</script>
+  {% endif%}
+
+{% endblock %}
