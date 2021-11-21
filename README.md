@@ -150,3 +150,8 @@ Aplicación web,
 	Nótese que 'config.py' es el fichero de configuración asociado a la aplicación web, y 
 	'dgt2db.py' es la aplicación encargada de obtener las imágenes, de las cámaras activas, 
 	de la dgt y las inserta en la base de datos asociada.
+
+## LICENSE
+### GNU AGPL v3
+[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)  
+`[![License: AGPL v3](https://img.shields.io/badge/License-AGPL_v3-blue.svg)](https://www.gnu.org/licenses/agpl-3.0)`
